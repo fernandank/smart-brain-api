@@ -9,7 +9,7 @@ const axios = require('axios')
 
 
 const handleApiCall = (req, res) => {
-    const PAT = '7c1e9f21a94b46e28f1efae16a6d2f19'; 
+    const PAT = '075c027ce7b34fcd80133a2022398523'; 
     const IMAGE_URL = req.body.id;
     const raw = {
         "user_app_id": {
