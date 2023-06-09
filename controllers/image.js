@@ -27,7 +27,7 @@ const handleApiCall = (req, res) => {
                 { 
                     headers: {
                         'Accept': 'application/json',
-                        'Authorization': 'Key ' + PAT
+                        'Authorization': '57a293b3b1e9482385fd7709fe2fd303' + PAT
                     }
                 }
             )
