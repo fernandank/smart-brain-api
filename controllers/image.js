@@ -1,17 +1,41 @@
 const Clarifai = require('clarifai');
-const app = new Clarifai.App({
- apiKey: '57a293b3b1e9482385fd7709fe2fd303' 
-});
-
+const axios = require('axios')
 
 const handleApiCall = (req, res) => {
+    const PAT = '075c027ce7b34fcd80133a2022398523'; 
+    const IMAGE_URL = req.body.id;
+    const raw = {
+        "user_app_id": {
+            "user_id": 'fernandank',
+            "app_id": 'my-first-application'
 
-  app.models
-    .predict('face-detection', req.body.input)
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => res.status(400).json('unable to work with API'))
+        },
+        "inputs": [
+            {
+                "data": {
+                    "image": {
+                        "url": IMAGE_URL
+                    }
+                }
+            }
+        ]
+    };
+
+
+    axios.post("https://api.clarifai.com/v2/models/face-detection/versions/45fb9a671625463fa646c3523a3087d5/outputs", 
+                raw,
+                { 
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': 'Key ' + PAT
+                    }
+                }
+            )
+        .then(response => {
+            res.json(response.data)
+
+        })
+        .catch(err => res.status(400).json('unable to work with api'))
 }
 
 
