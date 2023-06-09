@@ -13,12 +13,12 @@ const image = require('./controllers/image')
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString : 'postgres://backend_of_the_face_recognition_app_user:0piGRzDJ9YuWTHC6XyFwlscZkL87AJka@dpg-ch76j1g2qv26p1b9rtbg-a/backend_of_the_face_recognition_app',
-    host: 'dpg-ch76j1g2qv26p1b9rtbg-a.ohio-postgres.render.com',
+    connectionString : 'process.env.DATABASE_URL',
+    host: 'process.env.DATABASE_HOST',
     port: 5432,
-    user: 'backend_of_the_face_recognition_app_user',
-    password: '0piGRzDJ9YuWTHC6XyFwlscZkL87AJka',
-    database: 'backend_of_the_face_recognition_app'
+    user: 'process.env.DATABASE_USER',
+    password: 'process.env.DATABASE_PW',
+    database: 'process.env.DATABASE_DB'
   }
 });
 
