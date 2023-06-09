@@ -9,39 +9,16 @@ const app = new Clarifai.App({
 
 
 const handleApiCall = (req, res) => {
-    const PAT = '075c027ce7b34fcd80133a2022398523'; 
-    const IMAGE_URL = req.body.id;
-    const raw = {
-        "user_app_id": {
-            "user_id": 'fernandank',
-            "app_id": 'test_1'
-        },
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": IMAGE_URL
-                    }
-                }
-            }
-        ]
-    };
+  // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
+  // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
+  // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
+  // If that isn't working, then that means you will have to wait until their servers are back up. 
 
-
-    axios.post("https://api.clarifai.com/v2/models/face-detection/versions/45fb9a671625463fa646c3523a3087d5/outputs", 
-                raw,
-                { 
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': 'Key ' + PAT
-                    }
-                }
-            )
-        .then(response => {
-            res.json(response.data)
-
-        })
-        .catch(err => res.status(400).json('unable to work with api'))
+  app.models.predict('face-detection', req.body.input)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => res.status(400).json('unable to work with API'))
 }
 
 
