@@ -1,18 +1,19 @@
 const Clarifai = require('clarifai');
-const axios = require('axios')
-
 const app = new Clarifai.App({
  apiKey: '7c1e9f21a94b46e28f1efae16a6d2f19' 
 });
 
 
 const handleApiCall = (req, res) => {
-  // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
-  // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
-  // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
-  // If that isn't working, then that means you will have to wait until their servers are back up. 
 
-  app.models.predict('face-detection', req.body.input)
+  app.models
+    .predict(
+      {
+        id: 'face-detection',
+        name: 'face-detection',
+        version: '6dc7e46bc9124c5c8824be4822abe105',
+        type: 'visual-detector',
+      }, req.body.input)
     .then(data => {
       res.json(data);
     })
