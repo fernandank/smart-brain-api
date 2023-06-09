@@ -7,7 +7,7 @@ const handleApiCall = (req, res) => {
     const raw = {
         "user_app_id": {
             "user_id": 'fernandank',
-            "app_id": 'my-first-application'
+            "app_id": 'test_1'
 
         },
         "inputs": [
@@ -27,7 +27,7 @@ const handleApiCall = (req, res) => {
                 { 
                     headers: {
                         'Accept': 'application/json',
-                        'Authorization': '57a293b3b1e9482385fd7709fe2fd303' + PAT
+                        'Authorization': '7c1e9f21a94b46e28f1efae16a6d2f19' + PAT
                     }
                 }
             )
