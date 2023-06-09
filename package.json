@@ -1,8 +1,10 @@
 {
   "name": "smart-brain-api",
   "version": "1.0.0",
-    "engines": {
+  "engines": {
     "node": "16.x"
+  },
+  "description": "Final project for ZTM course",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -11,15 +13,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Final project for ZTM course",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcrypt-nodejs": "^0.0.3",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.0",
     "clarifai": "^2.9.1",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "knex": "^2.4.2",
-    "pg": "^8.10.0",
-    "serve": "^14.2.0"
+    "knex": "^2.2.0",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3",
+    "serve": "^14.0.1"
   }
 }

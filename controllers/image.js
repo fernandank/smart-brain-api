@@ -1,4 +1,6 @@
 const Clarifai = require('clarifai');
+const axios = require('axios')
+
 
 //You must add your own API key here from Clarifai. 
 const app = new Clarifai.App({
@@ -7,19 +9,39 @@ const app = new Clarifai.App({
 
 
 const handleApiCall = (req, res) => {
+    const PAT = '7c1e9f21a94b46e28f1efae16a6d2f19'; 
+    const IMAGE_URL = req.body.id;
+    const raw = {
+        "user_app_id": {
+            "user_id": 'nessabyte',
+            "app_id": 'my-first-application'
+        },
+        "inputs": [
+            {
+                "data": {
+                    "image": {
+                        "url": IMAGE_URL
+                    }
+                }
+            }
+        ]
+    };
 
-  app.models
-    .predict(
-      {
-        id: 'face-detection',
-        name: 'face-detection',
-        version: '6dc7e46bc9124c5c8824be4822abe105',
-        type: 'visual-detector',
-      }, req.body.input)
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => res.status(400).json('unable to work with API'))
+
+    axios.post("https://api.clarifai.com/v2/models/face-detection/versions/45fb9a671625463fa646c3523a3087d5/outputs", 
+                raw,
+                { 
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': 'Key ' + PAT
+                    }
+                }
+            )
+        .then(response => {
+            res.json(response.data)
+
+        })
+        .catch(err => res.status(400).json('unable to work with api'))
 }
 
 
