@@ -13,7 +13,7 @@ const handleApiCall = (req, res) => {
     const IMAGE_URL = req.body.id;
     const raw = {
         "user_app_id": {
-            "user_id": 'nessabyte',
+            "user_id": 'fernandank',
             "app_id": 'my-first-application'
         },
         "inputs": [

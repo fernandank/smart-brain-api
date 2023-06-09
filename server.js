@@ -27,6 +27,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+//ROOT
+app.get('/', (req, res) => { res.send("Success") })
 
 //Sigin route
 app.post('/signin', (req,res) => { signin.handleSignin(req, res, db, bcrypt)})
@@ -39,6 +41,8 @@ app.get('/profile/:id', (req,res) => { profile.handleProfileGet(req, res, db)})
 
 //counter of images
 app.put('/image', (req, res) => { image.handleImage(req,res,db)})
+
+//imageurl
 app.post('/imageUrl', (req,res) => { image.handleApiCall(req,res)})
 
 app.listen(process.env.PORT || 3000, () => {
