@@ -2,10 +2,10 @@ const Clarifai = require('clarifai');
 const axios = require('axios')
 
 
-//You must add your own API key here from Clarifai. 
-// const app = new Clarifai.App({
-//  apiKey: '7c1e9f21a94b46e28f1efae16a6d2f19' 
-// });
+You must add your own API key here from Clarifai. 
+const app = new Clarifai.App({
+ apiKey: '7c1e9f21a94b46e28f1efae16a6d2f19' 
+});
 
 
 const handleApiCall = (req, res) => {
