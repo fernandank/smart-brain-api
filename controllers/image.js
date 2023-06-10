@@ -8,20 +8,22 @@ const handleApiCall = (req, res) => {
 	// Change these to whatever model and image URL you want to use
 	const MODEL_ID = 'face-detection';
 	const IMAGE_URL = 'imageUrl';
-
-	const raw = ({ 
-		  {
-		user_app_id: {
-		    "user_id": USER_ID,
-		    "app_id": APP_ID
+	const raw = {
+		"user_app_id": {
+		    "user_id": 'nessabyte',
+		    "app_id": 'my-first-application'
 		},
-		model_id: MODEL_ID,
-
-		inputs: [
-		    { data: { image: { url: IMAGE_URL, allow_duplicate_url: true } } }
+		"inputs": [
+		    {
+			"data": {
+			    "image": {
+				"url": IMAGE_URL
+			    }
+			}
+		    }
 		]
-	    },
-		    
+	    };
+   
  	   axios.post("https://api.clarifai.com/v2/models/face-detection/versions/45fb9a671625463fa646c3523a3087d5/outputs", 
                 raw,
                 { 
